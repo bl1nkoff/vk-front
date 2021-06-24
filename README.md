@@ -1,4 +1,4 @@
-# Тестовое задание для стажёра в команду фронтенд-инфраструктуры
+# Тестовое задание для стажёра в команду фронтенд-инфраструктуры от Блинкова Сергея
 Преобразователь JSON с описанием контента формы в готовую вёрстку.
 
 ## Подключение
@@ -10,7 +10,7 @@
 ## Использование
 ```js script
     json = {...}
-    document.getElementById("for-form").innerHTML = jsonParserToHtml(json)
+    document.getElementById("for-form").innerHTML = jsonParserToHtml(json) //jsonParserToHtml(json, theme="")
     setHandlersForForm()
 ```
 ## Занятые имена пременных библеотекой
@@ -64,10 +64,11 @@ max - максимальное число выбранных пунктов
 arr - key: value список. Ключ - значение, значение - key: value тип
 ```json
 arr: {
-    pizza: {text: "Пицца", img: "images/pizza.svg"},
-    burger: {text: "Бургер", img: "images/burger.svg"},
-    taco: {text: "Тако", img: "images/taco.svg"},
-    salad: {text: "Салат", img: "images/salad.svg"},  
+    "пример": {"text": "Отображаемый текст", "img": "путь к картинке/лого" },
+    "pizza": {"text": "Пицца", "img": "images/pizza.svg"},
+    "burger": {"text": "Бургер", "img": "images/burger.svg"},
+    "taco": {"text": "Тако", "img": "images/taco.svg"},
+    "salad": {"text": "Салат", "img": "images/salad.svg"},  
 }
 ```
 Значение объекта списка - {text: "Отображаемый текст", img: "путь к картинке/лого" }
