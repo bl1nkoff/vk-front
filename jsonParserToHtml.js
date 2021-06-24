@@ -1,11 +1,11 @@
-let handlersForForm, ourInputs
+let handlersForForm, ourInputsForForm
 
 const jsonParserToHtml = (json, theme) => {
     handlersForForm = {
         "jsonparser-form-label-clear": clearForm,
         "jsonparser-form-label-submit": () => formHandler(json.submit.url)
     }
-    ourInputs = {}
+    ourInputsForForm = {}
     let result = `<form class="jsonparser-form" action="javascript:void(0);" ${json.id ? `id="${json.id}"` : '' }>
         ${json.title ? `<p class="jsonparser-form-title">${json.title}</p>`: ''}
         ${json.introduction ? `<p class="jsonparser-form-introduction">${json.introduction}</p>`: ''}`
@@ -23,12 +23,12 @@ const jsonParserToHtml = (json, theme) => {
         if(el.forsure) classes.push('jsonparser-form-label-forsure')
         if(el.button){
             classes.push('jsonparser-form-label-button')
-            handlersForForm[el.id + '-button'] = ()=>{ setValue(el.id, el.button.value) }
+            handlersForForm[el.id + '-button'] = ()=>{ setValueForForm(el.id, el.button.value) }
         }
 
         let res = ''
         if(el.type == "checkbox-block"){
-            ourInputs[el.id] = {}
+            ourInputsForForm[el.id] = {}
             let idCollect = []
             res += `<div class="${classes.join(" ")} jsonparser-form-label-checkboxblock" ${el.id? `id="${el.id}"`: ''}>`
             for(key in el.arr){
@@ -40,16 +40,16 @@ const jsonParserToHtml = (json, theme) => {
                     ${el.arr[key].text}</label>`
             }
             if(el.max){
-                ourInputs[el.id].max = el.max
+                ourInputsForForm[el.id].max = el.max
             }
-            ourInputs[el.id].arr = idCollect
+            ourInputsForForm[el.id].arr = idCollect
             result += res + `${el.label ? `<p class="jsonparser-form-label-text">${el.label}${el.max? ` (Максимум: ${el.max})`: ''}</p>` : ''}</div>`
             return
         }
         const value = el.value ? el.value : ''
         if(el.type == "checkbox") classes.push('jsonparser-form-label-checkbox') 
         res += `<label ${attrs} class="${classes.join(' ')}">`
-        ourInputs[el.id] = null
+        ourInputsForForm[el.id] = null
         switch(el.type){
             case "select":
                 res += `<select ${id}>`
@@ -84,8 +84,8 @@ const jsonParserToHtml = (json, theme) => {
 
 const formHandler = (url) => {
     let form = {}
-    for(el in ourInputs) {
-        if(ourInputs[el] == null){
+    for(el in ourInputsForForm) {
+        if(ourInputsForForm[el] == null){
             element = document.getElementById(el)
             if(element.type == "checkbox"){
                 form[el] = element.checked
@@ -95,8 +95,8 @@ const formHandler = (url) => {
             continue
         }
         form[el] = []
-        ourInputs[el].arr.forEach(cb => {
-            if(document.getElementById(cb).checked && ourInputs[el].max > form[el].length){
+        ourInputsForForm[el].arr.forEach(cb => {
+            if(document.getElementById(cb).checked && ourInputsForForm[el].max > form[el].length){
                 form[el].push(cb)
             }
         })
@@ -114,7 +114,7 @@ const formHandler = (url) => {
     }
 }
 
-const setValue = (id, value) => {
+const setValueForForm = (id, value) => {
     if(value == "today"){
         let today = new Date()
         day = today.getDate().toString()
@@ -126,20 +126,20 @@ const setValue = (id, value) => {
     document.getElementById(id).value = value
 }
 
-const setHandlers = (event, handlers = handlersForForm) => {
+const setHandlersForForm = (event, handlers = handlersForForm) => {
     for(el in handlers){
         document.getElementById(el).addEventListener('click', handlers[el])
     }
 }
 
 const clearForm = () => {
-    for(el in ourInputs) {
-        if(ourInputs[el] == null){
+    for(el in ourInputsForForm) {
+        if(ourInputsForForm[el] == null){
             document.getElementById(el).value = ""
             document.getElementById(el).checked = false
             continue
         }
-        ourInputs[el].arr.forEach(cb => {
+        ourInputsForForm[el].arr.forEach(cb => {
             document.getElementById(cb).checked = false
         })
     }
