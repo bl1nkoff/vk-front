@@ -1,0 +1,179 @@
+form{
+  background: white;
+  padding: 2em;
+  width: 100%;
+  margin: 1em auto;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  max-width: 450px;
+  box-sizing: border-box;
+  
+  --boxshadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+	--vkcolor: #2784F5;
+	--vkhover: #0c79ea;
+  --transition: .2s ease;
+  box-shadow: var(--boxshadow);
+}
+.jsonparser-form-title{
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 1em;
+}
+form label{
+  font-size: inherit;
+  display: grid;
+  flex-direction: column;
+  margin-bottom: .75em;
+  grid-template-areas: "input button help" "text - help";
+  grid-template-columns: auto repeat(2, max-content);
+}
+form input, form textarea, form select{
+  line-height: 1.2em;
+  min-height: 1.2em;
+  padding: 0.2em 0;
+  resize: vertical;
+  font-size: inherit;
+  border: none;
+  border-bottom: 2px var(--gray) solid;
+  margin-bottom: .25em;
+  font-size: 16px;
+  width: 100%;
+  /*! height: 2.4em; */
+}
+form input:active, form textarea:active, form select:active,
+form input:hover, form textarea:hover, form select:hover{
+  border-color: var(--vkcolor);
+}
+#jsonparser-form-label-submit{
+  width: max-content;
+  padding: 1em 2em;
+  border: none;
+  color: white;
+  background: var(--vkcolor);
+  box-shadow: var(--boxshadow);
+  cursor: pointer;
+  border-radius: 2px;
+  font-weight: 500;  
+  transition: var(--transition) background;
+  margin-top: 1em;
+}
+#jsonparser-form-label-submit:active,
+#jsonparser-form-label-submit:hover{
+  background: var(--vkhover);
+}
+.jsonparser-form-label-checkbox{
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  padding: .5em 0;
+  display: flex;
+}
+.jsonparser-form-label-checkboxblock .jsonparser-form-label-checkbox{
+  margin-bottom: 0;
+}
+.jsonparser-form-label-checkboxblock .jsonparser-form-label-text{
+  margin-top: .25em;
+}
+.jsonparser-form-label-checkbox span{
+  width: 1em;
+  height: 1em;
+  background: white;
+  display: inline-block;
+  margin-right: .5em;
+  box-sizing: border-box;
+  border: 0.4em solid white;
+  border-radius: 2px;
+  transition: border-color var(--transition);
+}
+.jsonparser-form-label-checkbox input{
+  display: none;
+}
+.jsonparser-form-label-checkbox div{
+  height: 1em;
+  width: 1em;
+  margin-right: .5em;
+  background-size: contain;
+}
+.jsonparser-form-label-checkbox input:checked ~ span{
+  border-color: var(--vkcolor);
+}
+.jsonparser-form-introduction{
+  font-size: 13px;
+  margin: -.75em 0 1em;
+}
+.jsonparser-form-introduction:first-child{
+  margin-top: 0;  
+}
+.jsonparser-form-notes{
+  margin-top: 1em;
+  font-size: 13px;
+}
+.jsonparser-form-label-help&jsonparser-form-label-button{
+  color: red;
+}
+.jsonparser-form-label-forsure .jsonparser-form-label-text:after{
+  content: " (Обязательно)";
+  color: darkred;
+}
+.jsonparser-form-label-help{
+  font-size: 16px;
+  display: block;
+  border: 2px solid black;
+  width: 1.2em;
+  height: 1.2em;
+  line-height: 1.2em;
+  opacity: 0.5;
+  text-align: center;
+  border-radius: 50%;
+  grid-area: help;
+  margin-left: 1em;
+  /*! align-self: baseline; */
+}
+label:hover .jsonparser-form-label-help{
+  color: var(--vkcolor);
+  border-color: var(--vkcolor);
+  opacity: 1;
+}
+.jsonparser-form-label-text{
+  grid-area: text;
+  font-size: 13px;
+}
+form label button{
+  color: var(--vkcolor);
+  background: white;
+  border: 1px solid var(--gray);
+  border-radius: 2px;
+  height: 100%;
+  padding: 0 2em;
+  margin-left: 1em;
+  box-shadow: var(--boxshadow);
+  cursor: pointer;
+}
+form label button:active,
+form label button:hover{
+  background: #eee;
+}
+form textarea{
+  height: 2.4em;
+}
+form .clear{
+  padding-top: .5em;
+  color: var(--gray);
+  text-align: center;
+}
+form .clear:hover, form .clear:active{
+  color: var(--vkcolor);
+}
+#jsonparser-form-label-clear{
+  background: none;
+  border: none;
+  padding-top: 1em;
+  color: var(--gray);
+  cursor: pointer;
+}
+#jsonparser-form-label-clear:hover,
+#jsonparser-form-label-clear:active{
+  color: black
+}
