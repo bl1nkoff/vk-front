@@ -110,9 +110,6 @@ form input:hover, form textarea:hover, form select:hover{
   margin-top: 1em;
   font-size: 13px;
 }
-.jsonparser-form-label-help&jsonparser-form-label-button{
-  color: red;
-}
 .jsonparser-form-label-forsure .jsonparser-form-label-text:after{
   content: " (Обязательно)";
   color: darkred;
