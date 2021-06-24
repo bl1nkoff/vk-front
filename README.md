@@ -1,4 +1,4 @@
-# Тестовое задание для стажёра в команду фронтенд-инфраструктуры от Блинкова Сергея
+# Тестовое задание для стажёра в команду фронтенд-инфраструктуры
 Преобразователь JSON с описанием контента формы в готовую вёрстку.
 
 ## Подключение
@@ -10,8 +10,18 @@
 ## Использование
 ```js script
     json = {...}
-    document.getElementById("for-form").innerHTML = jsonParserToHtml(json) //jsonParserToHtml(json, theme="")
-    setHandlers()
+    document.getElementById("for-form").innerHTML = jsonParserToHtml(json)
+    setHandlersForForm()
+```
+## Занятые имена пременных библеотекой
+```js script
+jsonParserToHtml,
+formHandler,
+handlersForForm,
+ourInputsForForm,
+clearForm,
+setValueForForm,
+formHandler
 ```
 
 ## Формирование JSON
@@ -54,16 +64,13 @@ max - максимальное число выбранных пунктов
 arr - key: value список. Ключ - значение, значение - key: value тип
 ```json
 arr: {
-    "пример": {"text": "Отображаемый текст", "img": "путь к картинке/лого" },
-    "pizza": {"text": "Пицца", "img": "images/pizza.svg"},
-    "burger": {"text": "Бургер", "img": "images/burger.svg"},
-    "taco": {"text": "Тако", "img": "images/taco.svg"},
-    "salad": {"text": "Салат", "img": "images/salad.svg"},  
+    pizza: {text: "Пицца", img: "images/pizza.svg"},
+    burger: {text: "Бургер", img: "images/burger.svg"},
+    taco: {text: "Тако", img: "images/taco.svg"},
+    salad: {text: "Салат", img: "images/salad.svg"},  
 }
 ```
-
-## Всё ванильное
-Никаких библеотек не было использовано. Из стороннего источника взята только строчка с перечислением шрифтов для примера, чтобы подгружались стандартные. 
+Значение объекта списка - {text: "Отображаемый текст", img: "путь к картинке/лого" }
 
 ## Что ещё можно добавить
 * checkbox-block -> radio-block
