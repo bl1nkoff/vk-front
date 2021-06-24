@@ -6,8 +6,7 @@ const jsonParserToHtml = (json, theme) => {
         "jsonparser-form-label-submit": () => formHandler(json.submit.url)
     }
     ourInputs = {}
-    let result = `<form class="${theme == "dark"? "jsonparser-darkform": ''}"
-        action="javascript:void(0);" ${json.id ? `id="${json.id}"` : '' }>
+    let result = `<form class="jsonparser-form" action="javascript:void(0);" ${json.id ? `id="${json.id}"` : '' }>
         ${json.title ? `<p class="jsonparser-form-title">${json.title}</p>`: ''}
         ${json.introduction ? `<p class="jsonparser-form-introduction">${json.introduction}</p>`: ''}`
         
